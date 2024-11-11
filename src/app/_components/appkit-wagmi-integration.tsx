@@ -41,21 +41,14 @@ export default function AppKitWagmiIntegration() {
     functionName: "getValue",
   });
 
-  const { writeContractAsync: setValue } = useWriteContract({
-    address: contractAddress as `0x${string}`,
-    abi: mockABI,
-    functionName: "setValue",
-  });
+  const { writeContractAsync: setValue } = useWriteContract();
 
-  const { signMessage } = useSignMessage({
-    onSuccess(data, variables) {
-      setMessage(`Address ${address} signed message: ${variables.message}`);
-    },
-  });
+  const { signMessage } = useSignMessage();
 
   const codeExamples = {
     read: {
-      ts: `
+      ts: [
+        `
 import { useReadContract } from 'wagmi'
 
 const { data: contractValue } = useReadContract({
@@ -64,7 +57,9 @@ const { data: contractValue } = useReadContract({
   functionName: 'getValue',
 })
       `,
-      js: `
+      ],
+      js: [
+        `
 import { useReadContract } from 'wagmi'
 
 const { data: contractValue } = useReadContract({
@@ -73,9 +68,11 @@ const { data: contractValue } = useReadContract({
   functionName: 'getValue',
 })
       `,
+      ],
     },
     write: {
-      ts: `
+      ts: [
+        `
 import { useWriteContract } from 'wagmi'
 
 const { write: setValue } = useWriteContract({
@@ -87,7 +84,9 @@ const { write: setValue } = useWriteContract({
 // Usage
 setValue({ args: [42] })
       `,
-      js: `
+      ],
+      js: [
+        `
 import { useWriteContract } from 'wagmi'
 
 const { write: setValue } = useWriteContract({
@@ -99,9 +98,11 @@ const { write: setValue } = useWriteContract({
 // Usage
 setValue({ args: [42] })
       `,
+      ],
     },
     sign: {
-      ts: `
+      ts: [
+        `
 import { useSignMessage } from 'wagmi'
 
 const { signMessage } = useSignMessage({
@@ -113,7 +114,9 @@ const { signMessage } = useSignMessage({
 // Usage
 signMessage({ message: 'Hello Web3!' })
       `,
-      js: `
+      ],
+      js: [
+        `
 import { useSignMessage } from 'wagmi'
 
 const { signMessage } = useSignMessage({
@@ -125,6 +128,7 @@ const { signMessage } = useSignMessage({
 // Usage
 signMessage({ message: 'Hello Web3!' })
       `,
+      ],
     },
   };
 
@@ -137,7 +141,7 @@ signMessage({ message: 'Hello Web3!' })
     title: string;
     icon: React.ReactNode;
     demoContent: React.ReactNode;
-    codeExample: { js?: string; ts?: string };
+    codeExample: { js?: string[]; ts?: string[] };
   }) => (
     <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg">
       <CardHeader>
@@ -175,7 +179,7 @@ signMessage({ message: 'Hello Web3!' })
                   style={tomorrow}
                   customStyle={{ background: "transparent", padding: "0" }}
                 >
-                  {codeExample.ts}
+                  {codeExample.ts || [""]}
                 </SyntaxHighlighter>
               </TabsContent>
               <TabsContent value="javascript">
@@ -184,7 +188,7 @@ signMessage({ message: 'Hello Web3!' })
                   style={tomorrow}
                   customStyle={{ background: "transparent", padding: "0" }}
                 >
-                  {codeExample.js}
+                  {codeExample.js || [""]}
                 </SyntaxHighlighter>
               </TabsContent>
             </Tabs>
@@ -220,7 +224,14 @@ signMessage({ message: 'Hello Web3!' })
             }
             demoContent={
               <Button
-                onClick={() => setValue({ args: [42] })}
+                onClick={() =>
+                  setValue({
+                    address: contractAddress as `0x${string}`,
+                    abi: mockABI,
+                    functionName: "setValue",
+                    args: [42],
+                  })
+                }
                 className="bg-blue-500 text-white hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700"
               >
                 Set Value to 42
