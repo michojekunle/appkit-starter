@@ -1,14 +1,14 @@
 import { defaultWagmiConfig } from "@web3modal/wagmi/react/config";
 import { cookieStorage, createStorage } from "wagmi";
 import {
-  mainnet,
-  arbitrum,
-  optimism,
+  // mainnet,
+  // arbitrum,
+  // optimism,
   sepolia,
-  base,
-  lisk,
-  baseSepolia,
-  liskSepolia,
+  // base,
+  // lisk,
+  // baseSepolia,
+  // liskSepolia,
 } from "wagmi/chains";
 
 // Get projectId from <https://cloud.reown.com>
@@ -25,14 +25,14 @@ const metadata = {
 
 // Create wagmiConfig
 const chains = [
-  mainnet,
-  arbitrum,
-  optimism,
+  // mainnet,
+  // arbitrum,
+  // optimism,
   sepolia,
-  base,
-  lisk,
-  baseSepolia,
-  liskSepolia,
+  // base,
+  // lisk,
+  // baseSepolia,
+  // liskSepolia,
 ] as const;
 export const config = defaultWagmiConfig({
   chains,

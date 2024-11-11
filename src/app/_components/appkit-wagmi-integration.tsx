@@ -6,7 +6,6 @@ import {
   useReadContract,
   useWriteContract,
   useSignMessage,
-  useAccount,
 } from "wagmi";
 import { FileCode, PenTool, MessageSquare } from "lucide-react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -32,8 +31,7 @@ const mockABI = [
 const contractAddress = "0x1234567890123456789012345678901234567890";
 
 export default function AppKitWagmiIntegration() {
-  const [message, setMessage] = useState("");
-  const { address } = useAccount();
+  // const [message, setMessage] = useState("");
 
   const { data: contractValue } = useReadContract({
     address: contractAddress as `0x${string}`,
@@ -75,29 +73,31 @@ const { data: contractValue } = useReadContract({
         `
 import { useWriteContract } from 'wagmi'
 
-const { write: setValue } = useWriteContract({
-  address: '${contractAddress}',
-  abi: mockABI,
-  functionName: 'setValue',
-})
+const { writeContractAsync: setValue } = useWriteContract();
 
 // Usage
-setValue({ args: [42] })
+setValue({
+  address: contractAddress,
+  abi: mockABI,
+  functionName: "setValue",
+  args: [42],
+})
       `,
       ],
       js: [
         `
 import { useWriteContract } from 'wagmi'
 
-const { write: setValue } = useWriteContract({
-  address: '${contractAddress}',
-  abi: mockABI,
-  functionName: 'setValue',
-})
+const { writeContractAsync: setValue } = useWriteContract();
 
 // Usage
-setValue({ args: [42] })
-      `,
+setValue({
+  address: contractAddress,
+  abi: mockABI,
+  functionName: "setValue",
+  args: [42],
+})
+      `
       ],
     },
     sign: {
@@ -105,11 +105,7 @@ setValue({ args: [42] })
         `
 import { useSignMessage } from 'wagmi'
 
-const { signMessage } = useSignMessage({
-  onSuccess(data, variables) {
-    setMessage(\`Address \${address} signed message: \${variables.message}\`)
-  },
-})
+const { signMessage } = useSignMessage();
 
 // Usage
 signMessage({ message: 'Hello Web3!' })
@@ -119,11 +115,7 @@ signMessage({ message: 'Hello Web3!' })
         `
 import { useSignMessage } from 'wagmi'
 
-const { signMessage } = useSignMessage({
-  onSuccess(data, variables) {
-    setMessage(\`Address \${address} signed message: \${variables.message}\`)
-  },
-})
+const { signMessage } = useSignMessage();
 
 // Usage
 signMessage({ message: 'Hello Web3!' })
@@ -199,7 +191,7 @@ signMessage({ message: 'Hello Web3!' })
   );
 
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+    <section className="w-full px-4 sm:px-8 lg:px-16 py-12 md:py-24 lg:py-32 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
       <div className="container px-4 md:px-6">
         <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-8 text-gray-900 dark:text-white">
           AppKit & Wagmi Integration
@@ -252,11 +244,11 @@ signMessage({ message: 'Hello Web3!' })
                 >
                   Sign Message
                 </Button>
-                {message && (
+                {/* {message && (
                   <p className="mt-2 text-sm text-gray-900 dark:text-white">
                     {message}
                   </p>
-                )}
+                )} */}
               </>
             }
             codeExample={codeExamples.sign}

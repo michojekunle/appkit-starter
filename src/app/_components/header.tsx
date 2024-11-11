@@ -1,26 +1,20 @@
 import Link from "next/link";
 // import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+// import { Input } from "@/components/ui/input";
 import { Menu, Code, Github } from "lucide-react";
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-4 sm:px-8 lg:px-16">
       <div className="container flex h-14 items-center">
         <div className="mr-4 hidden md:flex">
           <Link className="mr-6 flex items-center space-x-2" href="/">
             <Code className="h-6 w-6" />
             <span className="hidden font-bold sm:inline-block">
-              AppKit Starter
+              Nextjs AppKit Starter
             </span>
           </Link>
           <nav className="flex items-center space-x-6 text-sm font-medium">
-            <Link
-              className="transition-colors hover:text-foreground/80 text-foreground/60"
-              href="/docs"
-            >
-              Docs
-            </Link>
             <Link
               className="transition-colors hover:text-foreground/80 text-foreground/60"
               href="/examples"
@@ -40,16 +34,9 @@ export default function Header() {
           <span className="sr-only">Toggle Menu</span>
         </button>
         <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
-          <div className="w-full flex-1 md:w-auto md:flex-none">
-            <Input
-              className="h-9 md:w-[300px] lg:w-[300px]"
-              placeholder="Search documentation..."
-              type="search"
-            />
-          </div>
           <nav className="flex items-center">
             <Link
-              href="https://github.com/yourusername/appkit-starter"
+              href="https://github.com/michojekunle/appkit-starter"
               target="_blank"
               rel="noreferrer"
             >

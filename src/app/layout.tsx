@@ -2,13 +2,13 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { InitialStateProvider } from "@/app/_components/InitialStateProvider";
+import { InitialStateProvider } from "@/app/_components/initial-state-provider";
 import { headers } from "next/headers";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "AppKit Starter",
+  title: "Nextjs AppKit Starter",
   description: "AppKit by reown",
 };
 
