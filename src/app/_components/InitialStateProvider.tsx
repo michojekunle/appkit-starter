@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { cookieToInitialState } from "wagmi";
+import { cookieToInitialState, State } from "wagmi";
 import { config } from "@/config";
 import Web3ModalProvider from "@/context";
 
@@ -12,8 +12,8 @@ export function InitialStateProvider({
   cookie: string
   children: React.ReactNode;
 }) {
-  const [initialState, setInitialState] = useState<any | null | undefined>(
-    null
+  const [initialState, setInitialState] = useState<State | undefined>(
+    undefined
   );
 
   useEffect(() => {
