@@ -2,9 +2,9 @@ import Link from 'next/link'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Code, Globe, Layers, Zap } from 'lucide-react'
-import Header from '@/components/header'
-import AppKitWagmiIntegration from '@/components/appkit-wagmi-integration'
+import { Globe, Layers, Zap } from 'lucide-react'
+import Header from './header'
+import AppKitWagmiIntegration from './appkit-wagmi-integration'
 
 export default function LandingPage() {
   return (
