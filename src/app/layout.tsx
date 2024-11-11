@@ -3,6 +3,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { InitialStateProvider } from "@/app/_components/InitialStateProvider";
+import { headers } from "next/headers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,15 +12,17 @@ export const metadata: Metadata = {
   description: "AppKit by reown",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const cookies = await headers();
+  const cookie = cookies.get("cookie") ?? "";
   return (
     <html lang="en">
       <body className={inter.className}>
-        <InitialStateProvider>{children}</InitialStateProvider>
+        <InitialStateProvider cookie={cookie}>{children}</InitialStateProvider>
       </body>
     </html>
   );

@@ -1,17 +1,27 @@
 "use client";
+
 import React, { useEffect, useState } from "react";
 import { cookieToInitialState } from "wagmi";
 import { config } from "@/config";
 import Web3ModalProvider from "@/context";
-import { headers } from "next/headers";
 
-export function InitialStateProvider({ children }: { children: React.ReactNode }) {
-  const [initialState, setInitialState] = useState<any | null | undefined>(null);
+export function InitialStateProvider({
+  cookie,
+  children,
+}: {
+  cookie: string
+  children: React.ReactNode;
+}) {
+  const [initialState, setInitialState] = useState<any | null | undefined>(
+    null
+  );
 
   useEffect(() => {
-    async function fetchInitialState() {
-      const cookies = await headers();
-      const initialState = cookieToInitialState(config, cookies.get("cookie") ?? "");
+    async function fetchInitialState() {      
+      const initialState = cookieToInitialState(
+        config,
+        cookie
+      );
       setInitialState(initialState);
     }
     fetchInitialState();
@@ -19,5 +29,9 @@ export function InitialStateProvider({ children }: { children: React.ReactNode }
 
   if (!initialState) return null; // Or a loading spinner
 
-  return <Web3ModalProvider initialState={initialState}>{children}</Web3ModalProvider>;
+  return (
+    <Web3ModalProvider initialState={initialState}>
+      {children}
+    </Web3ModalProvider>
+  );
 }
