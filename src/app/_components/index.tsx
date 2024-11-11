@@ -47,7 +47,7 @@ export default function LandingPage() {
                   <CardTitle>AppKit Integration</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  Seamlessly interact with smart contracts using AppKit's powerful tools and abstractions.
+                  Seamlessly interact with smart contracts using AppKit&apos;s powerful tools and abstractions.
                 </CardContent>
               </Card>
               <Card className="bg-white/50 backdrop-blur-lg dark:bg-gray-800/50">
@@ -56,7 +56,7 @@ export default function LandingPage() {
                   <CardTitle>Wagmi Hooks</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  Leverage wagmi's React hooks for effortless Ethereum interactions and wallet management.
+                  Leverage wagmi&apos;s React hooks for effortless Ethereum interactions and wallet management.
                 </CardContent>
               </Card>
               <Card className="bg-white/50 backdrop-blur-lg dark:bg-gray-800/50">
