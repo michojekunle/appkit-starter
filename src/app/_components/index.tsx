@@ -135,7 +135,7 @@ export default function LandingPage() {
                 </p>
               </div>
               <div className="space-y-2 mt-8">
-                { !isConnected && <w3m-button />}
+                { !isConnected && <w3m-button size="md"/>}
               </div>
             </div>
           </div>

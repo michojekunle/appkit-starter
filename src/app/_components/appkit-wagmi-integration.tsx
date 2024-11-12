@@ -230,7 +230,7 @@ signMessage({ message: 'Hello Web3!' })
                   Set Value to 42
                 </Button>
               ) : (
-                <w3m-connect-button />
+                <w3m-connect-button size="md"/>
               )
             }
             codeExample={codeExamples.write}
@@ -251,7 +251,7 @@ signMessage({ message: 'Hello Web3!' })
                     Sign Message
                   </Button>
                 ) : (
-                  <w3m-connect-button />
+                  <w3m-connect-button size="md"/>
                 )}
                 {/* {message && (
                   <p className="mt-2 text-sm text-gray-900 dark:text-white">

@@ -43,7 +43,7 @@ export default function Header() {
                 <span className="sr-only">GitHub</span>
               </div>
             </Link>
-            <w3m-button />
+            <w3m-button size="md"/>
           </nav>
         </div>
       </div>

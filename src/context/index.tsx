@@ -17,12 +17,18 @@ createWeb3Modal({
   enableOnramp: true,
   themeMode: "dark",
   themeVariables: {
-    '--w3m-accent': '#22c55e',
-    '--w3m-border-radius-master': '12px',
+    "--w3m-accent": "#22c55e",
+    // "--w3m-border-radius-master": "20px",
   },
 });
 
-export default function Web3ModalProvider({ children, initialState }: { children: ReactNode; initialState?: State }) {
+export default function Web3ModalProvider({
+  children,
+  initialState,
+}: {
+  children: ReactNode;
+  initialState?: State;
+}) {
   return (
     <WagmiProvider config={config} initialState={initialState}>
       <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
