@@ -176,6 +176,4 @@ Please note that this project is released with a Contributor Code of Conduct. By
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
----
-
 I hope you find the Next.js AppKit Starter helpful for your Web3 Dapp development journey. If you have any questions or need further assistance, please don't hesitate to reach out or open an issue on GitHub. Happy coding!
