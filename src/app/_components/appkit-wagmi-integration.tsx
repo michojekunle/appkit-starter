@@ -31,8 +31,6 @@ const mockABI = [
 const contractAddress = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS;
 
 export default function AppKitWagmiIntegration() {
-  // const [message, setMessage] = useState("");
-
   const { data: contractValue } = useReadContract({
     address: contractAddress as `0x${string}`,
     abi: mockABI,
@@ -151,7 +149,7 @@ signMessage({ message: 'Hello Web3!' })
           </TabsContent>
           <TabsContent value="code">
             <Tabs defaultValue="typescript" className="w-full">
-              <TabsList className="inline-flex h-8 items-center justify-center rounded-md bg-muted p-1 text-muted-foreground mb-2">
+              {/* <TabsList className="inline-flex h-8 items-center justify-center rounded-md bg-muted p-1 text-muted-foreground mb-2">
                 <TabsTrigger
                   value="typescript"
                   className="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-2 py-1 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm"
@@ -164,7 +162,7 @@ signMessage({ message: 'Hello Web3!' })
                 >
                   JavaScript
                 </TabsTrigger>
-              </TabsList>
+              </TabsList> */}
               <TabsContent value="typescript">
                 <SyntaxHighlighter
                   language="typescript"
@@ -192,7 +190,7 @@ signMessage({ message: 'Hello Web3!' })
 
   return (
     <section className="w-full px-4 sm:px-8 lg:px-16 py-12 md:py-24 lg:py-32 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
-      <div className="container px-4 md:px-6">
+      <div className="container md:px-6">
         <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-8 text-gray-900 dark:text-white">
           AppKit & Wagmi Integration
         </h2>

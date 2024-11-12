@@ -1,13 +1,11 @@
 import Link from "next/link";
-// import { Button } from "@/components/ui/button";
-// import { Input } from "@/components/ui/input";
 import { Menu, Code, Github } from "lucide-react";
 
 export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-4 sm:px-8 lg:px-16">
-      <div className="container flex h-14 items-center">
-        <div className="mr-4 hidden md:flex">
+      <div className="container flex justify-between h-14 items-center">
+        <div className="mr-4 hidden md:flex gap-4">
           <Link className="mr-6 flex items-center space-x-2" href="/">
             <Code className="h-6 w-6" />
             <span className="hidden font-bold sm:inline-block">
@@ -33,8 +31,8 @@ export default function Header() {
           <Menu className="h-6 w-6" />
           <span className="sr-only">Toggle Menu</span>
         </button>
-        <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
-          <nav className="flex items-center">
+        <div className="flex items-center justify-between space-x-2 md:justify-end">
+          <nav className="flex items-center gap-3">
             <Link
               href="https://github.com/michojekunle/appkit-starter"
               target="_blank"

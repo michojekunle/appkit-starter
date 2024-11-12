@@ -1,8 +1,10 @@
+'use client'
+
 import Link from 'next/link'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Globe, Layers, Zap } from 'lucide-react'
+import { Github, Globe, Layers, Zap } from 'lucide-react'
 import Header from './header'
 import { useAccount } from 'wagmi';
 import AppKitWagmiIntegration from './appkit-wagmi-integration'
@@ -14,29 +16,32 @@ export default function LandingPage() {
       <Header />
       <main className="flex-1">
         <section className="w-full px-4 sm:px-8 lg:px-16 py-12 md:py-24 lg:py-32 xl:py-48 bg-gradient-to-br from-gray-50 to-gray-200 dark:from-gray-900 dark:to-gray-800">
-          <div className="container px-4 md:px-6">
+          <div className="container md:px-6">
             <div className="flex flex-col items-center space-y-4 text-center">
               <div className="space-y-2">
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none text-gray-900 dark:text-white">
                   Next.js AppKit Starter
                 </h1>
                 <p className="mx-auto max-w-[700px] text-gray-900 mt-4 md:text-xl dark:text-gray-200">
-                  Jumpstart your Web3 development Dapps with this powerful and flexible starter kit.
+                  Jumpstart your Web3 Dapps development with this powerful and flexible starter kit.
                 </p>
               </div>
               <div className="space-x-4">
-                <Button asChild className="bg-blue-500 text-white hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700">
+                <Button asChild className="">
                   <Link href="#">Get Started</Link>
                 </Button>
-                <Button variant="outline" asChild className="text-gray-900 border-gray-900 hover:bg-gray-900/10 dark:text-white dark:border-white dark:hover:bg-white/10">
-                  <Link href="https://github.com/michojekunle/appkit-starter">GitHub</Link>
+                <Button variant="secondary" asChild className="">
+                  <Link href="https://github.com/michojekunle/appkit-starter" className='flex gap-1 items-center'>
+                    <Github className="h-5 w-5" />
+                    <span>GitHub</span>
+                  </Link>
                 </Button>
               </div>
             </div>
           </div>
         </section>
         <section className="w-full px-4 sm:px-8 lg:px-16 py-12 md:py-24 lg:py-32 bg-white dark:bg-gray-900">
-          <div className="container px-4 md:px-6">
+          <div className="container md:px-6">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-8 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
               Key Features
             </h2>
@@ -73,7 +78,7 @@ export default function LandingPage() {
         </section>
         <AppKitWagmiIntegration />
         <section className="w-full px-4 sm:px-8 lg:px-16 py-12 md:py-24 lg:py-32">
-          <div className="container px-4 md:px-6">
+          <div className="container md:px-6">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-8 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
               Quick Start
             </h2>
@@ -119,7 +124,7 @@ export default function LandingPage() {
           </div>
         </section>
         <section className="w-full px-4 sm:px-8 lg:px-16 py-12 md:py-24 lg:py-32 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900">
-          <div className="container px-4 md:px-6">
+          <div className="container md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-gray-900 dark:text-white">
@@ -129,7 +134,7 @@ export default function LandingPage() {
                   Connect your wallet and start building your next Web3 project today.
                 </p>
               </div>
-              <div className="w-full max-w-sm space-y-2 mt-4">
+              <div className="space-y-2 mt-8">
                 { !isConnected && <w3m-button />}
               </div>
             </div>
