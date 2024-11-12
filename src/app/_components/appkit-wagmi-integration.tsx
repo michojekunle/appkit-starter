@@ -6,6 +6,7 @@ import {
   useReadContract,
   useWriteContract,
   useSignMessage,
+  useAccount,
 } from "wagmi";
 import { FileCode, PenTool, MessageSquare } from "lucide-react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -31,6 +32,7 @@ const mockABI = [
 const contractAddress = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS;
 
 export default function AppKitWagmiIntegration() {
+  const { isConnected } = useAccount();
   const { data: contractValue } = useReadContract({
     address: contractAddress as `0x${string}`,
     abi: mockABI,
@@ -95,7 +97,7 @@ setValue({
   functionName: "setValue",
   args: [42],
 })
-      `
+      `,
       ],
     },
     sign: {
@@ -189,7 +191,7 @@ signMessage({ message: 'Hello Web3!' })
   );
 
   return (
-    <section className="w-full px-4 sm:px-8 lg:px-16 py-12 md:py-24 lg:py-32 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+    <section className="w-full px-4 sm:px-8 lg:px-16 py-12 md:py-24 lg:py-32 ">
       <div className="container md:px-6">
         <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-8 text-gray-900 dark:text-white">
           AppKit & Wagmi Integration
@@ -213,19 +215,23 @@ signMessage({ message: 'Hello Web3!' })
               <PenTool className="w-8 h-8 mb-2 text-gray-900 dark:text-white" />
             }
             demoContent={
-              <Button
-                onClick={() =>
-                  setValue({
-                    address: contractAddress as `0x${string}`,
-                    abi: mockABI,
-                    functionName: "setValue",
-                    args: [42],
-                  })
-                }
-                className="bg-blue-500 text-white hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700"
-              >
-                Set Value to 42
-              </Button>
+              isConnected ? (
+                <Button
+                  onClick={() =>
+                    setValue({
+                      address: contractAddress as `0x${string}`,
+                      abi: mockABI,
+                      functionName: "setValue",
+                      args: [42],
+                    })
+                  }
+                  className="bg-green-500 text-white hover:bg-green-600 dark:bg-green-600 dark:hover:bg-green-700"
+                >
+                  Set Value to 42
+                </Button>
+              ) : (
+                <w3m-connect-button />
+              )
             }
             codeExample={codeExamples.write}
           />
@@ -236,12 +242,17 @@ signMessage({ message: 'Hello Web3!' })
             }
             demoContent={
               <>
-                <Button
-                  onClick={() => signMessage({ message: "Hello Web3!" })}
-                  className="bg-blue-500 text-white hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700"
-                >
-                  Sign Message
-                </Button>
+                {" "}
+                {isConnected ? (
+                  <Button
+                    onClick={() => signMessage({ message: "Hello Web3!" })}
+                    className="bg-green-500 text-white hover:bg-green-600 dark:bg-green-600 dark:hover:bg-green-700"
+                  >
+                    Sign Message
+                  </Button>
+                ) : (
+                  <w3m-connect-button />
+                )}
                 {/* {message && (
                   <p className="mt-2 text-sm text-gray-900 dark:text-white">
                     {message}

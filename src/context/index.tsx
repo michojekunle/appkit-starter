@@ -15,7 +15,11 @@ createWeb3Modal({
   projectId,
   enableAnalytics: true,
   enableOnramp: true,
-  themeMode: "dark"
+  themeMode: "dark",
+  themeVariables: {
+    '--w3m-accent': '#22c55e',
+    '--w3m-border-radius-master': '12px',
+  },
 });
 
 export default function Web3ModalProvider({ children, initialState }: { children: ReactNode; initialState?: State }) {

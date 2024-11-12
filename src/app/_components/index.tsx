@@ -12,7 +12,7 @@ import AppKitWagmiIntegration from './appkit-wagmi-integration'
 export default function LandingPage() {
   const { isConnected } = useAccount();
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 max-w-[1800px] mx-auto">
+    <div className="scroll-smooth flex flex-col min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 max-w-[1800px] mx-auto">
       <Header />
       <main className="flex-1">
         <section className="w-full px-4 sm:px-8 lg:px-16 py-12 md:py-24 lg:py-32 xl:py-48 bg-gradient-to-br from-gray-50 to-gray-200 dark:from-gray-900 dark:to-gray-800">
@@ -27,10 +27,10 @@ export default function LandingPage() {
                 </p>
               </div>
               <div className="space-x-4">
-                <Button asChild className="">
-                  <Link href="#">Get Started</Link>
+                <Button asChild className="bg-green-500 hover:bg-green-600 transition-colors">
+                  <Link href="#quick-start">Get Started</Link>
                 </Button>
-                <Button variant="secondary" asChild className="">
+                <Button variant="secondary" asChild className="shadow-md">
                   <Link href="https://github.com/michojekunle/appkit-starter" className='flex gap-1 items-center'>
                     <Github className="h-5 w-5" />
                     <span>GitHub</span>
@@ -76,8 +76,7 @@ export default function LandingPage() {
             </div>
           </div>
         </section>
-        <AppKitWagmiIntegration />
-        <section className="w-full px-4 sm:px-8 lg:px-16 py-12 md:py-24 lg:py-32">
+        <section id="quick-start" className="w-full px-4 sm:px-8 lg:px-16 py-12 md:py-24 lg:py-32 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
           <div className="container md:px-6">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-8 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
               Quick Start
@@ -123,6 +122,7 @@ export default function LandingPage() {
             </Tabs>
           </div>
         </section>
+        <AppKitWagmiIntegration />
         <section className="w-full px-4 sm:px-8 lg:px-16 py-12 md:py-24 lg:py-32 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900">
           <div className="container md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
