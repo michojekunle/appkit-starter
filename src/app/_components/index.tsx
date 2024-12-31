@@ -8,9 +8,12 @@ import { Github, Globe, Layers, Zap } from 'lucide-react'
 import Header from './header'
 import { useAccount } from 'wagmi';
 import AppKitWagmiIntegration from './appkit-wagmi-integration'
+import { useAppKit, useAppKitAccount } from '@reown/appkit/react'
 
 export default function LandingPage() {
-  const { isConnected } = useAccount();
+  const { open } = useAppKit();
+  const { isConnected } = useAppKitAccount();
+
   return (
     <div className="scroll-smooth flex flex-col min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 max-w-[1800px] mx-auto">
       <Header />
@@ -135,7 +138,7 @@ export default function LandingPage() {
                 </p>
               </div>
               <div className="space-y-2 mt-8">
-                { !isConnected && <w3m-button size="md"/>}
+                { !isConnected && <Button onClick={() => open()}>Connect wallet</Button>}
               </div>
             </div>
           </div>

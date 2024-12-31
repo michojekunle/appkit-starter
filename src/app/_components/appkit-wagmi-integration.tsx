@@ -6,12 +6,11 @@ import {
   useReadContract,
   useWriteContract,
   useSignMessage,
-  useAccount,
 } from "wagmi";
 import { FileCode, PenTool, MessageSquare } from "lucide-react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/prism";
-import { useAppKit } from "@reown/appkit/react";
+import { useAppKit, useAppKitAccount } from "@reown/appkit/react";
 
 const mockABI = [
   {
@@ -33,7 +32,7 @@ const mockABI = [
 const contractAddress = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS;
 
 export default function AppKitWagmiIntegration() {
-  const { isConnected } = useAccount();
+  const { isConnected } = useAppKitAccount();
   const { open } = useAppKit();
 
   const { data: contractValue } = useReadContract({
