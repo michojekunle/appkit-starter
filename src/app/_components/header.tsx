@@ -1,7 +1,12 @@
 import Link from "next/link";
 import { Menu, Code, Github } from "lucide-react";
+import { useAppKit } from "@reown/appkit/react";
+import { Button } from "@/components/ui/button";
+import { useAccount } from "wagmi";
 
 export default function Header() {
+  const { open } = useAppKit();
+  const { isConnected } = useAccount();
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-4 sm:px-8 lg:px-16">
       <div className="container flex justify-between h-14 items-center">
@@ -43,7 +48,11 @@ export default function Header() {
                 <span className="sr-only">GitHub</span>
               </div>
             </Link>
-            <w3m-button size="md"/>
+            {isConnected ? (
+              <appkit-button/>
+            ) : (
+              <Button onClick={() => open()}>Connect wallet</Button>
+            )}
           </nav>
         </div>
       </div>

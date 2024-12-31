@@ -23,11 +23,11 @@ export default function LandingPage() {
                   Next.js AppKit Starter
                 </h1>
                 <p className="mx-auto max-w-[700px] text-gray-900 mt-4 md:text-xl dark:text-gray-200">
-                  Jumpstart your Web3 Dapps development with this powerful and flexible starter kit.
+                  Jumpstart your Web3 Dapps development with this flexible starter kit.
                 </p>
               </div>
               <div className="space-x-4">
-                <Button asChild className="bg-green-500 hover:bg-green-600 transition-colors">
+                <Button>
                   <Link href="#quick-start">Get Started</Link>
                 </Button>
                 <Button variant="secondary" asChild className="shadow-md">

@@ -11,6 +11,7 @@ import {
 import { FileCode, PenTool, MessageSquare } from "lucide-react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { useAppKit } from "@reown/appkit/react";
 
 const mockABI = [
   {
@@ -33,6 +34,8 @@ const contractAddress = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS;
 
 export default function AppKitWagmiIntegration() {
   const { isConnected } = useAccount();
+  const { open } = useAppKit();
+
   const { data: contractValue } = useReadContract({
     address: contractAddress as `0x${string}`,
     abi: mockABI,
@@ -230,7 +233,7 @@ signMessage({ message: 'Hello Web3!' })
                   Set Value to 42
                 </Button>
               ) : (
-                <w3m-connect-button size="md"/>
+                <Button onClick={() => open()}>Connect wallet</Button>
               )
             }
             codeExample={codeExamples.write}
@@ -251,7 +254,7 @@ signMessage({ message: 'Hello Web3!' })
                     Sign Message
                   </Button>
                 ) : (
-                  <w3m-connect-button size="md"/>
+                  <Button onClick={() => open()}>Connect wallet</Button>
                 )}
                 {/* {message && (
                   <p className="mt-2 text-sm text-gray-900 dark:text-white">
