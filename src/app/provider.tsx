@@ -5,7 +5,7 @@ import { WagmiAdapter } from '@reown/appkit-adapter-wagmi';
 import { arbitrum, mainnet, sepolia } from '@reown/appkit/networks'
 import { createAppKit } from '@reown/appkit/react'
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { State, WagmiProvider } from "wagmi";
+import { WagmiProvider } from "wagmi";
 
 const queryClient = new QueryClient();
 

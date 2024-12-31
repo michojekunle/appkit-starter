@@ -6,7 +6,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Github, Globe, Layers, Zap } from 'lucide-react'
 import Header from './header'
-import { useAccount } from 'wagmi';
 import AppKitWagmiIntegration from './appkit-wagmi-integration'
 import { useAppKit, useAppKitAccount } from '@reown/appkit/react'
 
